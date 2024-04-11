@@ -1,0 +1,10 @@
+<h1>{{ category ? category.name : "No category with this name" }}</h1>
+
+<section>
+  <h2>Other categories</h2>
+  <ul>
+    <li *ngFor="let category of randomCategories">
+      <a [routerLink]="['/categories', category.slug]">{{ category.name }}</a>
+    </li>
+  </ul>
+</section>
