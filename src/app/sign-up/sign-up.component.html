@@ -1,0 +1,163 @@
+<h1>Sign up dude !</h1>
+
+<section>
+  <h2>Your form :</h2>
+  <ul>
+    <li>name : {{ signUpForm.name ? signUpForm.name : "John" }}</li>
+    <li>surname : {{ signUpForm.surname ? signUpForm.surname : "Doe" }}</li>
+    <li>DoB : {{ signUpForm.birthday | date : "dd/MM/yyyy" }}</li>
+    <li>
+      Email : {{ signUpForm.email ? signUpForm.email : "john.doe@gmail.com" }}
+    </li>
+  </ul>
+</section>
+
+@if (isFormSent) {
+<section>
+  <h2>Form sent !</h2>
+  <p>Thank you for signing up, {{ signUpForm.name }} !</p>
+</section>
+} @else {
+<section>
+  <form #registerForm="ngForm" (ngSubmit)="registerForm.valid && signUp()">
+    <div>
+      <label for="name">name</label>
+      <input
+        [(ngModel)]="signUpForm.name"
+        type="text"
+        id="name"
+        name="name"
+        placeholder="John"
+        required
+        minlength="2"
+        maxlength="255"
+        #nameRef="ngModel"
+      />
+      @if(nameRef.errors && nameRef.errors['required'] && nameRef.touched) {
+      <div>Name is required</div>
+      } @else if (nameRef.errors && nameRef.errors['minlength']) {
+      <div>Name must be at least 2 characters long</div>
+      } @else if (nameRef.errors && nameRef.errors['maxlength']) {
+      <div>Name must be at most 255 characters long</div>
+      }
+    </div>
+    <div>
+      <label for="surname">surname</label>
+      <input
+        [(ngModel)]="signUpForm.surname"
+        type="text"
+        id="surname"
+        name="surname"
+        placeholder="Doe"
+        required
+        minlength="2"
+        maxlength="255"
+        #surnameRef="ngModel"
+      />
+      @if(surnameRef.errors && surnameRef.errors['required'] &&
+      surnameRef.touched) {
+      <div>surname is required</div>
+      } @else if (surnameRef.errors && surnameRef.errors['minlength'] &&
+      surnameRef.touched) {
+      <div>surname must be at least 2 characters long</div>
+      } @else if (surnameRef.errors && surnameRef.errors['maxlength'] &&
+      surnameRef.touched) {
+      <div>surname must be at most 255 characters long</div>
+      }
+    </div>
+    <div>
+      <label for="birthday">birth date</label>
+      <input
+        [(ngModel)]="signUpForm.birthday"
+        type="date"
+        id="birthday"
+        name="birthday"
+        required
+        #birthdayRef="ngModel"
+      />
+      @if(birthdayRef.errors && birthdayRef.errors['required'] &&
+      birthdayRef.touched) {
+      <div>Birth date is required</div>
+      } @else if (!birthdayRef.valid && birthdayRef.touched) {
+      <div>Invalid date</div>
+      }
+    </div>
+    <div>
+      <label for="email">email</label>
+      <input
+        [(ngModel)]="signUpForm.email"
+        type="email"
+        id="email"
+        name="email"
+        placeholder="john.doe@gmail.com"
+        required
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        #emailRef="ngModel"
+      />
+      @if(emailRef.errors && emailRef.errors['required'] && emailRef.touched) {
+      <div>Email is required</div>
+      } @else if (emailRef.errors && emailRef.errors['pattern'] &&
+      emailRef.touched) {
+      <div>Invalid email</div>
+      }
+    </div>
+    <div>
+      <label for="password">password</label>
+      <input
+        [(ngModel)]="signUpForm.password"
+        type="password"
+        id="password"
+        name="password"
+        placeholder="************"
+        required
+        minlength="8"
+        maxlength="255"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
+        #passwordRef="ngModel"
+      />
+      @if (passwordRef.errors && passwordRef.errors['required'] &&
+      passwordRef.touched) {
+      <div>Password is required</div>
+      } @else if(passwordRef.errors && passwordRef.errors['pattern'] &&
+      passwordRef.touched) {
+      <div>
+        Password must contain at least one digit, one lowercase letter, one
+        uppercase letter, one special character and be at least 8 characters
+        long
+      </div>
+      } @else if (signUpForm.password !== signUpForm.confirmPassword){
+      <div>Passwords do not match</div>
+      }
+    </div>
+    <div>
+      <label for="confirmPassword">confirm password</label>
+      <input
+        [(ngModel)]="signUpForm.confirmPassword"
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        placeholder="************"
+        required
+        minlength="8"
+        maxlength="255"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
+        #confirmPasswordRef="ngModel"
+      />
+      @if (confirmPasswordRef.errors && confirmPasswordRef.errors['required'] &&
+      confirmPasswordRef.touched) {
+      <div>Confirm password is required</div>
+      } @else if(confirmPasswordRef.errors &&
+      confirmPasswordRef.errors['pattern'] && confirmPasswordRef.touched) {
+      <div>
+        Password must contain at least one digit, one lowercase letter, one
+        uppercase letter, one special character and be at least 8 characters
+        long
+      </div>
+      } @else if (signUpForm.password !== signUpForm.confirmPassword){
+      <div>Passwords do not match</div>
+      }
+    </div>
+    <button type="submit">Sign up</button>
+  </form>
+</section>
+}

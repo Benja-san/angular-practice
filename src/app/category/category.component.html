@@ -5,9 +5,7 @@
   <h2>Other categories</h2>
   <ul>
     @for (category of randomCategories; track category.id) {
-    <li>
-      <a [routerLink]="['/categories', category.slug]">{{ category.name }}</a>
-    </li>
+    <app-category-card [category]="category"></app-category-card>
     }
   </ul>
 </section>

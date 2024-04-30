@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryComponent } from './category/category.component';
+import { CategoryCardComponent } from './category-card/category-card.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { CategoryComponent } from './category/category.component';
     CategoriesComponent,
     CategoryComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, CategoryCardComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

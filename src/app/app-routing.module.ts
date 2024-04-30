@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryComponent } from './category/category.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'categories/:categorySlug',
     component: CategoryComponent,
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent,
   },
   {
     path: '',

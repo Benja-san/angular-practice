@@ -1,9 +1,7 @@
 <h1>Our categories</h1>
 <ul>
   @for (category of categories; track category.id) {
-  <li>
-    <a [routerLink]="['/categories', category.slug]">{{ category.name }}</a>
-  </li>
+  <app-category-card [category]="category"></app-category-card>
   } @empty {
   <li>No categories found</li>
   }

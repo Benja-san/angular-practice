@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CategoryService } from '../service/category.service';
-import { Category } from '../model/category';
+import { Category } from '../model/Category';
 
 @Component({
   selector: 'app-category',
