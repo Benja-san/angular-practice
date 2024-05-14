@@ -112,7 +112,7 @@
         required
         minlength="8"
         maxlength="255"
-        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
+        pattern="^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[!@#$%^&*]).{8,}$"
         #passwordRef="ngModel"
       />
       @if (passwordRef.errors && passwordRef.errors['required'] &&
@@ -140,7 +140,7 @@
         required
         minlength="8"
         maxlength="255"
-        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
+        pattern="^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[!@#$%^&*]).{8,}$"
         #confirmPasswordRef="ngModel"
       />
       @if (confirmPasswordRef.errors && confirmPasswordRef.errors['required'] &&
