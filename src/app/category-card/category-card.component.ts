@@ -10,5 +10,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './category-card.component.scss',
 })
 export class CategoryCardComponent {
-  @Input() category: Category | null = null;
+  @Input() category?: Category;
 }

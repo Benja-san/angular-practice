@@ -12,7 +12,7 @@ export class CategoriesComponent {
   constructor(private categoryService: CategoryService) {}
 
   ngOnInit() {
-    this._categories = this.categoryService.categories;
+    this._categories = this.categoryService.getAllFromApi();
   }
 
   public get categories(): Category[] {

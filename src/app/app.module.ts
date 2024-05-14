@@ -8,6 +8,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryComponent } from './category/category.component';
 import { CategoryCardComponent } from './category-card/category-card.component';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { CategoryCardComponent } from './category-card/category-card.component';
     CategoryComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CategoryCardComponent],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
